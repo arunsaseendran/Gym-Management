@@ -75,7 +75,7 @@ function InputIcon({ icon: Icon, ...rest }: { icon: any; [k: string]: any }) {
       <input
         {...rest}
         type={isPass ? (show ? "text" : "password") : rest.type}
-        className="input-base pl-10 pr-10"
+        className="input-base !pl-10 !pr-10"
       />
       {isPass && (
         <button type="button" onClick={() => setShow(v => !v)}
@@ -118,6 +118,7 @@ export default function Login() {
   // Login fields
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   // Registration fields
   const [firstName, setFirstName] = useState("");
@@ -170,7 +171,12 @@ export default function Login() {
     if (field === "firstName" && !val) err = "First name is required.";
     else if (field === "lastName" && !val) err = "Last name is required.";
     else if (field === "username" && !val) err = "Username is required.";
-    else if (field === "password" && (!val || String(val).length < 6)) err = "Password must be at least 6 characters.";
+    else if (field === "password") {
+      if (!val || String(val).length < 6) err = "Password must be at least 6 characters.";
+      if (touched.confirmPassword && val !== confirmPassword) setErrors(prev => ({ ...prev, confirmPassword: "Passwords do not match." }));
+      else if (touched.confirmPassword && val === confirmPassword) setErrors(prev => ({ ...prev, confirmPassword: "" }));
+    }
+    else if (field === "confirmPassword" && val !== password) err = "Passwords do not match.";
     else if (field === "email") {
       if (!val) err = "Email is required.";
       else if (!/\S+@\S+\.\S+/.test(String(val))) err = "Invalid email format.";
@@ -252,7 +258,7 @@ export default function Login() {
   const handleProceedToPayment = async (e: React.FormEvent) => {
     e.preventDefault();
     const newTouched = {
-      firstName: true, lastName: true, username: true, password: true, email: true,
+      firstName: true, lastName: true, username: true, password: true, confirmPassword: true, email: true,
       phone: true, age: true, height: true, weight: true, targetWeight: true, calorieTarget: true
     };
     setTouched(prev => ({ ...prev, ...newTouched }));
@@ -261,6 +267,7 @@ export default function Login() {
     const lValid = validateField("lastName", lastName);
     const uValid = validateField("username", username);
     const pValid = validateField("password", password);
+    const cpValid = validateField("confirmPassword", confirmPassword);
     const eValid = validateField("email", email);
     const phValid = validateField("phone", phone);
     const aValid = validateField("age", age);
@@ -269,7 +276,7 @@ export default function Login() {
     const twValid = validateField("targetWeight", targetWeight);
     const ctValid = validateField("calorieTarget", calorieTarget);
 
-    if (!(fValid && lValid && uValid && pValid && eValid && phValid && aValid && hValid && wValid && twValid && ctValid)) {
+    if (!(fValid && lValid && uValid && pValid && cpValid && eValid && phValid && aValid && hValid && wValid && twValid && ctValid)) {
       setErrorMsg("Please fix the validation errors below."); return;
     }
 
@@ -582,9 +589,14 @@ export default function Login() {
               <FieldGroup label="Username" error={errors.username} touched={touched.username}>
                 <InputIcon icon={User} type="text" value={username} onChange={(e: any) => handleChange("username", e.target.value, setUsername)} onBlur={(e: any) => handleBlur("username", e.target.value)} />
               </FieldGroup>
-              <FieldGroup label="Password" error={errors.password} touched={touched.password}>
-                <InputIcon icon={Key} type="password" value={password} onChange={(e: any) => handleChange("password", e.target.value, setPassword)} onBlur={(e: any) => handleBlur("password", e.target.value)} />
-              </FieldGroup>
+              <div className="grid grid-cols-2 gap-3">
+                <FieldGroup label="Password" error={errors.password} touched={touched.password}>
+                  <InputIcon icon={Key} type="password" value={password} onChange={(e: any) => handleChange("password", e.target.value, setPassword)} onBlur={(e: any) => handleBlur("password", e.target.value)} />
+                </FieldGroup>
+                <FieldGroup label="Confirm Password" error={errors.confirmPassword} touched={touched.confirmPassword}>
+                  <InputIcon icon={Key} type="password" value={confirmPassword} onChange={(e: any) => handleChange("confirmPassword", e.target.value, setConfirmPassword)} onBlur={(e: any) => handleBlur("confirmPassword", e.target.value)} />
+                </FieldGroup>
+              </div>
               <div className="grid grid-cols-2 gap-3">
                 <FieldGroup label="Email" error={errors.email} touched={touched.email}>
                   <InputIcon icon={Mail} type="email" value={email} onChange={(e: any) => handleChange("email", e.target.value, setEmail)} onBlur={(e: any) => handleBlur("email", e.target.value)} />

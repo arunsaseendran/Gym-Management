@@ -547,43 +547,10 @@ export default function Landing() {
               Start Your Journey
               <ArrowRight className="btn-icon" />
             </button>
-            {/* <button onClick={() => navigate("/login")} className="hero-btn-secondary">
-              <Play className="btn-icon" style={{ width: 14, height: 14 }} />
-              Admin / Trainer Login
-            </button> */}
+
           </motion.div>
 
-          {/* Tech pills */}
-          <motion.div
-            className="hero-pills"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            {["scikit-learn ML", "React + Vite", "Django REST", "Razorpay", "QR Scanning"].map((t) => (
-              <span key={t} className="tech-pill">{t}</span>
-            ))}
-          </motion.div>
-        </motion.div>
 
-        {/* Stats row */}
-        <motion.div
-          className="hero-stats"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-        >
-          {STATS.map((s, i) => (
-            <div key={i} className="stat-tile">
-              <div className="stat-icon-wrap">
-                <s.icon className="stat-icon" />
-              </div>
-              <div className="stat-val">
-                <AnimatedCounter target={s.val} />
-              </div>
-              <div className="stat-label">{s.label}</div>
-            </div>
-          ))}
         </motion.div>
 
         {/* Scroll hint */}
@@ -604,7 +571,7 @@ export default function Landing() {
           <motion.div
             className="section-label"
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
             <Zap className="label-icon" /> Platform Features
@@ -612,7 +579,7 @@ export default function Landing() {
           <motion.h2
             className="section-h2"
             initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
@@ -621,7 +588,7 @@ export default function Landing() {
           <motion.p
             className="section-desc"
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
@@ -634,8 +601,8 @@ export default function Landing() {
             <motion.div
               key={i}
               className="feature-card"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 1, y: 0, scale: 1 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.07 }}
               style={{ "--feature-glow": f.glow, "--feature-color": f.color } as React.CSSProperties}
@@ -660,10 +627,10 @@ export default function Landing() {
         </div>
 
         <div className="section-header">
-          <motion.div className="section-label" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <motion.div className="section-label" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <TrendingUp className="label-icon" /> Membership Plans
           </motion.div>
-          <motion.h2 className="section-h2" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+          <motion.h2 className="section-h2" initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
             CHOOSE YOUR <span className="h2-accent">PLAN</span>
           </motion.h2>
         </div>
@@ -673,8 +640,8 @@ export default function Landing() {
             <motion.div
               key={plan.key}
               className={`plan-card ${plan.highlight ? "plan-highlight" : ""}`}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 1, y: 0, scale: 1 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.1 }}
               style={{ "--plan-color": plan.color } as React.CSSProperties}
@@ -718,13 +685,13 @@ export default function Landing() {
       {/* ── How It Works ──────────────────────────────────────────────── */}
       <section id="about" className="hiw-section">
         <div className="section-header">
-          <motion.div className="section-label" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <motion.div className="section-label" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <Clock className="label-icon" /> How It Works
           </motion.div>
-          <motion.h2 className="section-h2" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+          <motion.h2 className="section-h2" initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
             GET STARTED IN <span className="h2-accent">4 STEPS</span>
           </motion.h2>
-          <motion.p className="section-desc" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
+          <motion.p className="section-desc" initial={{ opacity: 0 }} animate={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
             From sign-up to smashing your goals — it only takes minutes.
           </motion.p>
         </div>
@@ -734,8 +701,8 @@ export default function Landing() {
             <motion.div
               key={s.step}
               className="hiw-card"
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 1, y: 0, scale: 1 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
               style={{ "--hiw-color": s.color } as React.CSSProperties}
@@ -755,10 +722,10 @@ export default function Landing() {
       {/* ── Role Portals (Member & Trainer only) ─────────────────────── */}
       <section className="roles-section">
         <div className="section-header">
-          <motion.div className="section-label" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <motion.div className="section-label" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <Dumbbell className="label-icon" /> Who It's For
           </motion.div>
-          <motion.h2 className="section-h2" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+          <motion.h2 className="section-h2" initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
             BUILT FOR <span className="h2-accent">EVERYONE</span>
           </motion.h2>
         </div>
@@ -768,8 +735,8 @@ export default function Landing() {
             <motion.div
               key={r.role}
               className="role-card"
-              initial={{ opacity: 0, scale: 0.94 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 1, y: 0, scale: 1 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.12 }}
               style={{ "--role-color": r.color, "--role-glow": r.glow } as React.CSSProperties}
@@ -795,13 +762,13 @@ export default function Landing() {
       {/* ── Why SmartGym ──────────────────────────────────────────────── */}
       <section className="whyus-section">
         <div className="section-header">
-          <motion.div className="section-label" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <motion.div className="section-label" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <Sparkles className="label-icon" /> Why SmartGym
           </motion.div>
-          <motion.h2 className="section-h2" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+          <motion.h2 className="section-h2" initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
             NOT JUST A GYM, <span className="h2-accent">A SYSTEM</span>
           </motion.h2>
-          <motion.p className="section-desc" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
+          <motion.p className="section-desc" initial={{ opacity: 0 }} animate={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
             Here's what makes SmartGym different from every other fitness platform.
           </motion.p>
         </div>
@@ -811,8 +778,8 @@ export default function Landing() {
             <motion.div
               key={i}
               className="whyus-card"
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 1, y: 0, scale: 1 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
               style={{ "--wu-color": w.color, "--wu-glow": w.glow } as React.CSSProperties}
@@ -838,8 +805,8 @@ export default function Landing() {
         </div>
         <motion.div
           className="cta-content"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 1, y: 0, scale: 1 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >

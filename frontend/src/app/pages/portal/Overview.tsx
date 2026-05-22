@@ -10,16 +10,16 @@ import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, YAxis } from "rec
 
 const D = { fontFamily: "'Barlow Condensed', system-ui, sans-serif" };
 
-function StatCard({ label, value, sub, icon: Icon, color, delay = 0 }: any) {
+function StatCard({ label, value, sub, icon: Icon, color }: any) {
   return (
-    <motion.div className="stat-card" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay }}>
+    <div className="stat-card">
       <div className="flex items-start justify-between mb-3">
         <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{label}</span>
         <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${color}`}><Icon className="w-4 h-4" /></div>
       </div>
       <div className="text-4xl font-black leading-none mb-1.5" style={D}>{value}</div>
       {sub && <div className="text-xs text-muted-foreground font-medium">{sub}</div>}
-    </motion.div>
+    </div>
   );
 }
 

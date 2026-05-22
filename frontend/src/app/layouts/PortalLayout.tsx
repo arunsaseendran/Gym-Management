@@ -143,7 +143,7 @@ export default function PortalLayout() {
   );
 
   return (
-    <div className="min-h-screen bg-background flex text-foreground overflow-hidden">
+    <div className="min-h-[100dvh] bg-background flex text-foreground overflow-hidden">
       {/* Desktop sidebar */}
       <div className="hidden md:flex w-64 shrink-0 flex-col fixed inset-y-0 left-0 z-40">
         <Sidebar />
@@ -200,7 +200,7 @@ export default function PortalLayout() {
         </header>
 
         {/* Page */}
-        <main className="flex-1 overflow-y-auto p-5 md:p-7 lg:p-8">
+        <main className="flex-1 overflow-y-auto px-5 py-3 md:px-7 md:py-6 lg:px-8 lg:py-8">
           <AnimatePresence mode="wait">
             <motion.div key={location.pathname}
               initial={{ opacity: 0, y: 12 }}

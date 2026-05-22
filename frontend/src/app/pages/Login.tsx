@@ -454,7 +454,7 @@ export default function Login() {
 
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen bg-background flex overflow-hidden">
+    <div className="min-h-[100dvh] bg-background flex overflow-hidden">
       {/* Left decorative panel */}
       <div className="hidden lg:flex lg:w-2/5 xl:w-1/2 relative flex-col items-center justify-center p-12 overflow-hidden">
         <div className="absolute inset-0">

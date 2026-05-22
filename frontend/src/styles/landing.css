@@ -49,6 +49,7 @@
   background: rgba(5,5,9,0.8);
   backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid rgba(238,242,255,0.06);
+  padding-top: env(safe-area-inset-top);
 }
 .nav-inner {
   max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;

@@ -170,7 +170,7 @@ export default function PortalLayout() {
       {/* Main */}
       <div className="flex-1 flex flex-col md:pl-64">
         {/* Topbar */}
-        <header className="sticky top-0 z-30 h-14 flex items-center justify-between px-5 bg-background/90 backdrop-blur-xl border-b border-border">
+        <header className="sticky top-0 z-30 h-[calc(3.5rem+env(safe-area-inset-top))] pt-[env(safe-area-inset-top)] flex items-center justify-between px-5 bg-background/90 backdrop-blur-xl border-b border-border">
           <div className="flex items-center gap-3">
             <button onClick={() => setSidebarOpen(o => !o)} className="md:hidden btn-ghost p-2">
               <Menu className="w-5 h-5" />

@@ -1,7 +1,16 @@
 // ─── API Client for Django Backend ──────────────────────────────────────────
 
-const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api";
+const envUrl = import.meta.env.VITE_API_URL;
+let BASE_URL = "http://localhost:8000/api";
 
+if (envUrl) {
+  // Strip trailing slashes to prevent double slashes (//)
+  BASE_URL = envUrl.replace(/\/+$/, "");
+  // Ensure the URL ends with /api since all Django routes are under /api/
+  if (!BASE_URL.endsWith("/api")) {
+    BASE_URL += "/api";
+  }
+}
 export interface UserSession {
   token: string;
   role: "admin" | "trainer" | "member";
